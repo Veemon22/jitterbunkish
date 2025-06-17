@@ -16,7 +16,7 @@
 
 <form method="post" action="{% url 'quotes:source_view' %}">
     {% csrf_token %}
-    <label for="sourcetypes">Type of Quote:</label>
+    <label for="sourcetypes">Type of Source:</label>
     <select name="sourcetypes" id="sourcetypes">
         <option value="5" {% if selected_value == '5' or selected_value is None %}selected{% endif %}>All</option>
         <option value="4" {% if selected_value == '4' %}selected{% endif %}>Not Specified</option>
