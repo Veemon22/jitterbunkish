@@ -1,0 +1,42 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'quotes/styles.css' %}">
+
+<div class="filter">
+<form method="post" action="{% url 'quotes:quote_view' %}">
+    {% csrf_token %}
+    <label for="quotetypes">Type of Quote:</label>
+    <select name="quotetypes" id="quotetypes">
+        <option value="2" {% if selected_value == '2' or selected_value is None %}selected{% endif %}>All</option>
+        <option value="1" {% if selected_value == '1' %}selected{% endif %}>Positive</option>
+        <option value="0" {% if selected_value == '0' %}selected{% endif %}>Neutral</option>
+        <option value="-1" {% if selected_value == '-1' %}selected{% endif %}>Negative</option>
+    </select>
+    <button type="submit">Submit</button>
+</form>
+
+<form method="post" action="{% url 'quotes:source_view' %}">
+    {% csrf_token %}
+    <label for="sourcetypes">Type of Quote:</label>
+    <select name="sourcetypes" id="sourcetypes">
+        <option value="5" {% if selected_value == '5' or selected_value is None %}selected{% endif %}>All</option>
+        <option value="4" {% if selected_value == '4' %}selected{% endif %}>Not Specified</option>
+        <option value="3" {% if selected_value == '3' %}selected{% endif %}>Podcast</option>
+        <option value="2" {% if selected_value == '2' %}selected{% endif %}>Article</option>
+        <option value="1" {% if selected_value == '1' %}selected{% endif %}>Tweet</option>
+    </select>
+    <button type="submit">Submit</button>
+</form>
+</div>
+
+<h1> Quote List </h1>
+{% if quotes_list %}
+    <ul>
+    {% for quote in quotes_list %}
+        <li><a href = "{% url 'quotes:detail' quote.id %}">{{ quote.quote_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p> No quotes here</p>
+{% endif %}
+
+<a href="{% url 'quotes:form' %}">Add Quotes Here</a>

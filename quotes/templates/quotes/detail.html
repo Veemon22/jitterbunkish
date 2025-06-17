@@ -1,0 +1,18 @@
+<h1> Quote Info </h1>
+<ul>
+    <li>{{ quote.quote_text }}</li>
+    <li>Author Name: {{ quote.author_text }}</li>
+    <li>{{ quote.get_sentiment_display }}</li>
+    <li>{{ quote.create_date}}</li>
+    <li>{{ quote.source}}</li>
+</ul>
+
+<h1>Source</h1>
+<ul>
+    <li>{{ quote.source.get_type_text_display }}</li>
+    <li><a href = "{{ quote.source.url }}">{{ quote.source.url }}</a></li>
+    <li>{{ quote.source.title_text }}</li>
+    <li>{{ quote.source.description_text }}</li>
+    <li>{{ quote.source.pub_date }}</li>
+</ul>
+<a href = "/quotes"> Back </a>

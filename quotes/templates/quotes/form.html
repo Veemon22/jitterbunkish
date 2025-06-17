@@ -1,0 +1,24 @@
+<h1> Add Your Things Here </h1>
+<h3>Info for Source and Quote</h3>
+<form action="{% url 'quotes:create_quote' %}" method="post">
+  {% csrf_token %}
+  <label for="qtext">Quote Text</label>
+  <input type="text" id="qtext" name="qtext"><br><br>
+  <label for="author_name">Author's Full Name</label>
+  <input type="text" id="author_name" name="author_name"><br><br>
+  <p1> Type: -1 for Negative | 0 for Neutral | 1 for Positive <p1><br><br>
+  <label for="outlook_value">Outlook</label>
+  <input type="text" id="outlook_value" name="outlook_value"><br><br>
+  <p1> Type: 1 for Tweet | 2 for Article | 3 for Podcast | 4 for Not Specified <p1><br><br>
+  <label for="source_type">Type of Source</label>
+  <input type="text" id="source_type" name="source_type"><br><br>
+  <label for="link">Link</label>
+  <input type="text" id="link" name="link"><br><br>
+  <label for="source_name">Source Title</label>
+  <input type="text" id="source_name" name="source_name"><br><br>
+  <label for="description">Description</label>
+  <input type="text" id="description" name="description"><br><br>
+  <input type="submit" value="Submit">
+</form>
+
+<a href = "/quotes"> Back </a>
